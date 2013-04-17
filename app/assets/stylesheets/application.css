@@ -16,5 +16,55 @@ background-image: url('/assets/bg.png'); background-position: left top; backgrou
 }
 
 .todo_table td{
-	padding: 10px;
+	padding: 5px;
+}
+
+.fancyInput {
+    display: inline-block;
+    font-family: 'Fjalla One',sans-serif;
+    letter-spacing: -1px;
+    position: relative;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    width: auto;
+}
+
+.fancyInput {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 4px rgba(0, 0, 0, 0.2) inset, 0 0 12px rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    font-size: 30px;
+    line-height: 1.3;
+    max-width: 80%;
+    min-width: 50%;
+    overflow: hidden;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.fancyInput input {
+    left: -1px;
+    padding-right: 0;
+    top: 1px;
+}
+
+.fancyInput input, textarea {
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    font-family: 'Fjalla One',sans-serif;
+    font-size: inherit;
+    left: 0;
+    letter-spacing: -1px;
+    outline: 0 none;
+    padding-bottom: 0;
+    padding-left: inherit;
+    padding-right: inherit;
+    padding-top: inherit;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
 }
