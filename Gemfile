@@ -39,3 +39,4 @@ gem 'jquery-rails'
 
 gem 'quiet_assets', :group => :development
 gem 'awesome_print', :require => 'ap'
+gem 'devise'
