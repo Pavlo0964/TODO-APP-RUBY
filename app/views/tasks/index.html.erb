@@ -14,8 +14,10 @@
     <td><%= task.name %></td>
     <td style="display:none;"><%= task.status %></td>
     <td style="display:none;"><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
-    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+	<% if can? :update,  @task %>
+	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+	 <% end %>
   </tr>
 <% end %>
 </table>

@@ -13877,3 +13877,2251 @@ Processing by TasksController#index as HTML
   [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
   Rendered tasks/index.html.erb within layouts/application (1.5ms)
 Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.3ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (107.0ms)[0m  [1mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "status" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (3.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (3.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (2.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (2.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (3.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130417163504')
+  [1m[36m (3.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130415140428')[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/tasks" for 192.168.1.100 at 2013-04-23 12:24:11 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mTask Load (0.0ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 85ms (Views: 30.6ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/users/sign_out" for 192.168.1.100 at 2013-04-23 12:24:15 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Pk2ovr2LSe/xQE5ExUlLcP468FDCvauOEex+xx0PHI0="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 9ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 12:24:15 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 12:24:15 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (28.1ms)
+Completed 200 OK in 42ms (Views: 41.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 12:24:19 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vh7xmRQaaorapkNt6iqoL4bRC6lIYvv996+uU282HOI=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+Completed 401 Unauthorized in 86ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vh7xmRQaaorapkNt6iqoL4bRC6lIYvv996+uU282HOI=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 94ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 12:24:26 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vh7xmRQaaorapkNt6iqoL4bRC6lIYvv996+uU282HOI=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "remember_created_at" = '2013-04-23 12:24:26.446583', "updated_at" = '2013-04-23 12:24:26.447161' WHERE "users"."id" = 2[0m
+  [1m[35m (23.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  UPDATE "users" SET "current_sign_in_at" = '2013-04-23 12:24:26.480090', "sign_in_count" = 2, "updated_at" = '2013-04-23 12:24:26.480752' WHERE "users"."id" = 2
+  [1m[36m (8.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 128ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 12:24:26 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 28ms (Views: 24.0ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/sign_out" for 192.168.1.100 at 2013-04-23 12:24:32 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"vh7xmRQaaorapkNt6iqoL4bRC6lIYvv996+uU282HOI="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  UPDATE "users" SET "remember_created_at" = NULL, "updated_at" = '2013-04-23 12:24:32.199040' WHERE "users"."id" = 2
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 4ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 12:24:32 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 12:24:32 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for 192.168.1.100 at 2013-04-23 12:24:43 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"WUqm+I6WaBoxrnx3KOQOrb9XB3/Te9ACMzSCw+/BXGQ="}
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 12:24:43 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 12:24:43 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 15ms (Views: 14.7ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130423122801')
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130423123935')[0m
+  [1m[35m (36.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 12:58:52 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vqND/2F/zqsTv9jAbWdZECjHv7xX+xzUf8Ugz1J++vg=", "user"=>{"email"=>"rulyua1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua1@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "users" SET "remember_created_at" = '2013-04-23 12:58:52.626941', "updated_at" = '2013-04-23 12:58:52.627567' WHERE "users"."id" = 3
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2013-04-23 12:58:52.631568', "sign_in_count" = 2, "updated_at" = '2013-04-23 12:58:52.632091' WHERE "users"."id" = 3[0m
+  [1m[35m (1.5ms)[0m  commit transaction
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 107ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 12:58:52 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 39ms (Views: 23.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/tasks/new" for 192.168.1.100 at 2013-04-23 12:58:54 +0000
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  Rendered tasks/_form.html.erb (2.8ms)
+  Rendered tasks/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/tasks" for 192.168.1.100 at 2013-04-23 12:58:57 +0000
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vqND/2F/zqsTv9jAbWdZECjHv7xX+xzUf8Ugz1J++vg=", "task"=>{"name"=>"asssss", "status"=>"0"}, "commit"=>"Create Task"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tasks" ("created_at", "name", "status", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 23 Apr 2013 12:58:57 UTC +00:00], ["name", "<a href=asssss>asssss</a>"], ["status", false], ["updated_at", Tue, 23 Apr 2013 12:58:57 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/tasks/25
+Completed 302 Found in 8ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/tasks/25" for 192.168.1.100 at 2013-04-23 12:58:57 +0000
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"25"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1[0m  [["id", "25"]]
+  Rendered tasks/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 51ms (Views: 46.6ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 192.168.1.100 at 2013-04-23 12:58:59 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"vqND/2F/zqsTv9jAbWdZECjHv7xX+xzUf8Ugz1J++vg="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  UPDATE "users" SET "remember_created_at" = NULL, "updated_at" = '2013-04-23 12:58:59.567823' WHERE "users"."id" = 3
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 5ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 12:58:59 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 12:58:59 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 12:58:59 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/R8EkW8j1/QvUc2PsjJ9jh0G3mSJMsSe8HoQA7fziM0=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  UPDATE "users" SET "remember_created_at" = '2013-04-23 12:58:59.998551', "updated_at" = '2013-04-23 12:58:59.998964' WHERE "users"."id" = 2
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-04-23 12:24:26.480090', "current_sign_in_at" = '2013-04-23 12:59:00.001736', "sign_in_count" = 3, "updated_at" = '2013-04-23 12:59:00.002262' WHERE "users"."id" = 2[0m
+  [1m[35m (1.8ms)[0m  commit transaction
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 89ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 12:59:00 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks/new" for 192.168.1.100 at 2013-04-23 12:59:26 +0000
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  Rendered tasks/_form.html.erb (1.4ms)
+  Rendered tasks/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 39ms (Views: 38.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/tasks" for 192.168.1.100 at 2013-04-23 12:59:29 +0000
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/R8EkW8j1/QvUc2PsjJ9jh0G3mSJMsSe8HoQA7fziM0=", "task"=>{"name"=>"ffffffffff", "status"=>"0"}, "commit"=>"Create Task"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tasks" ("created_at", "name", "status", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Tue, 23 Apr 2013 12:59:29 UTC +00:00], ["name", "<a href=ffffffffff>ffffffffff</a>"], ["status", false], ["updated_at", Tue, 23 Apr 2013 12:59:29 UTC +00:00]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/tasks/26
+Completed 302 Found in 9ms (ActiveRecord: 4.4ms)
+
+
+Started GET "/tasks/26" for 192.168.1.100 at 2013-04-23 12:59:29 +0000
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"26"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1[0m  [["id", "26"]]
+  Rendered tasks/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks" for 192.168.1.100 at 2013-04-23 12:59:32 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 16ms (Views: 14.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks" for 192.168.1.100 at 2013-04-23 13:00:32 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 55ms (Views: 52.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tasks" for 192.168.1.100 at 2013-04-23 13:00:33 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 32ms (Views: 28.9ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/sign_out" for 192.168.1.100 at 2013-04-23 13:00:34 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/R8EkW8j1/QvUc2PsjJ9jh0G3mSJMsSe8HoQA7fziM0="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  UPDATE "users" SET "remember_created_at" = NULL, "updated_at" = '2013-04-23 13:00:34.858559' WHERE "users"."id" = 2
+  [1m[36m (3.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 6ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:00:34 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:00:34 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:00:35 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wFe06/vJS97ol+WdCy3v1UdM+ErYAgSE+cnfQR+IWwI=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "users" SET "remember_created_at" = '2013-04-23 13:00:35.334209', "updated_at" = '2013-04-23 13:00:35.334495' WHERE "users"."id" = 2
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-04-23 12:59:00.001736', "current_sign_in_at" = '2013-04-23 13:00:35.337763', "sign_in_count" = 4, "updated_at" = '2013-04-23 13:00:35.338189' WHERE "users"."id" = 2[0m
+  [1m[35m (2.2ms)[0m  commit transaction
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 88ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:00:35 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 192.168.1.100 at 2013-04-23 13:00:38 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wFe06/vJS97ol+WdCy3v1UdM+ErYAgSE+cnfQR+IWwI="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "remember_created_at" = NULL, "updated_at" = '2013-04-23 13:00:38.268822' WHERE "users"."id" = 2[0m
+  [1m[35m (91.3ms)[0m  commit transaction
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 94ms (ActiveRecord: 91.7ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:00:38 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:00:38 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 28ms (Views: 27.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:00:43 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5dnENIscI6MnqfRbU/ahorF+mpipXZpTYCo93uludKU=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "remember_created_at" = '2013-04-23 13:00:43.643927', "updated_at" = '2013-04-23 13:00:43.644279' WHERE "users"."id" = 2[0m
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2013-04-23 13:00:35.337763', "current_sign_in_at" = '2013-04-23 13:00:43.646769', "sign_in_count" = 5, "updated_at" = '2013-04-23 13:00:43.647234' WHERE "users"."id" = 2
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 88ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:00:43 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 29ms (Views: 26.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:05:16 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (40.0ms)
+Completed 500 Internal Server Error in 48ms
+
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0xa207a10>:0xb5c2cff8>):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update, comment %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___22644299__622763198'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___22644299__622763198'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.1ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:05:28 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (6.3ms)
+Completed 500 Internal Server Error in 15ms
+
+ActionView::Template::Error (undefined method `role?' for #<User:0x9b58b10>):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___22644299_81545530'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___22644299_81545530'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.1ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:07:56 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 500 Internal Server Error in 33ms
+
+NameError (undefined local variable or method `confirmed_at' for #<User:0xb6778830>):
+  activemodel (3.2.13) lib/active_model/attribute_methods.rb:407:in `method_missing'
+  activerecord (3.2.13) lib/active_record/attribute_methods.rb:149:in `method_missing'
+  devise (2.2.3) lib/devise/models/confirmable.rb:77:in `confirmed?'
+  devise (2.2.3) lib/devise/models/confirmable.rb:139:in `confirmation_required?'
+  devise (2.2.3) lib/devise/models/confirmable.rb:108:in `active_for_authentication?'
+  devise (2.2.3) lib/devise/hooks/activatable.rb:6:in `block in <top (required)>'
+  warden (1.2.1) lib/warden/hooks.rb:14:in `call'
+  warden (1.2.1) lib/warden/hooks.rb:14:in `block in _run_callbacks'
+  warden (1.2.1) lib/warden/hooks.rb:9:in `each'
+  warden (1.2.1) lib/warden/hooks.rb:9:in `_run_callbacks'
+  warden (1.2.1) lib/warden/manager.rb:53:in `_run_callbacks'
+  warden (1.2.1) lib/warden/proxy.rb:179:in `set_user'
+  warden (1.2.1) lib/warden/proxy.rb:217:in `user'
+  warden (1.2.1) lib/warden/proxy.rb:318:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.2.3) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:418:in `_run__25851411__process_action__830681047__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.13) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.13) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.13) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.13) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.13) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.13) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__689212853__call__991201674__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:09:54 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 500 Internal Server Error in 3ms
+
+NameError (undefined local variable or method `confirmed_at' for #<User:0xb5b4a1a8>):
+  activemodel (3.2.13) lib/active_model/attribute_methods.rb:407:in `method_missing'
+  activerecord (3.2.13) lib/active_record/attribute_methods.rb:149:in `method_missing'
+  devise (2.2.3) lib/devise/models/confirmable.rb:77:in `confirmed?'
+  devise (2.2.3) lib/devise/models/confirmable.rb:139:in `confirmation_required?'
+  devise (2.2.3) lib/devise/models/confirmable.rb:108:in `active_for_authentication?'
+  devise (2.2.3) lib/devise/hooks/activatable.rb:6:in `block in <top (required)>'
+  warden (1.2.1) lib/warden/hooks.rb:14:in `call'
+  warden (1.2.1) lib/warden/hooks.rb:14:in `block in _run_callbacks'
+  warden (1.2.1) lib/warden/hooks.rb:9:in `each'
+  warden (1.2.1) lib/warden/hooks.rb:9:in `_run_callbacks'
+  warden (1.2.1) lib/warden/manager.rb:53:in `_run_callbacks'
+  warden (1.2.1) lib/warden/proxy.rb:179:in `set_user'
+  warden (1.2.1) lib/warden/proxy.rb:217:in `user'
+  warden (1.2.1) lib/warden/proxy.rb:318:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.2.3) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:418:in `_run__25851411__process_action__830681047__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.13) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.13) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.13) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.13) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.13) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.13) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__689212853__call__991201674__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.9ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (19.6ms)[0m  ALTER TABLE "users" ADD "confirmation_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "confirmed_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "confirmation_sent_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "unconfirmed_email" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130423130858')
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:14:54 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "remember_created_at" = NULL, "updated_at" = '2013-04-23 13:14:54.126051' WHERE "users"."id" = 2[0m
+  [1m[35m (2.5ms)[0m  commit transaction
+Completed 401 Unauthorized in 61ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:14:54 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 59ms (Views: 58.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:14:54 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5dnENIscI6MnqfRbU/ahorF+mpipXZpTYCo93uludKU=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 401 Unauthorized in 81ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:14:54 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 25ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:14:56 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5dnENIscI6MnqfRbU/ahorF+mpipXZpTYCo93uludKU=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 401 Unauthorized in 83ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:14:56 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 15ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:14:58 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5dnENIscI6MnqfRbU/ahorF+mpipXZpTYCo93uludKU=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 401 Unauthorized in 84ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:14:59 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation/new" for 192.168.1.100 at 2013-04-23 13:15:00 +0000
+Processing by Devise::ConfirmationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/confirmations/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/confirmation" for 192.168.1.100 at 2013-04-23 13:15:04 +0000
+Processing by Devise::ConfirmationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5dnENIscI6MnqfRbU/ahorF+mpipXZpTYCo93uludKU=", "user"=>{"email"=>"rulyua@gmail.com"}, "commit"=>"Resend confirmation instructions"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."unconfirmed_email" = 'rulyua@gmail.com' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."confirmation_token" = 'TJsZRqDVJsyGhCftMBzx' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "users" SET "confirmation_token" = 'TJsZRqDVJsyGhCftMBzx', "confirmation_sent_at" = '2013-04-23 13:15:04.846516', "updated_at" = '2013-04-23 13:15:04.846914' WHERE "users"."id" = 2
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.9ms)
+Completed 500 Internal Server Error in 330ms
+
+ActionView::Template::Error (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+    2: 
+    3: <p>You can confirm your account email through the link below:</p>
+    4: 
+    5: <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+  app/views/devise/mailer/confirmation_instructions.html.erb:5:in `_app_views_devise_mailer_confirmation_instructions_html_erb__806184671_90117170'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.1ms)
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:41:47 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:41:48 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5dnENIscI6MnqfRbU/ahorF+mpipXZpTYCo93uludKU=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 401 Unauthorized in 90ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:41:48 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 14ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:41:49 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 51ms (Views: 50.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:42:39 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 29ms (Views: 28.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:42:39 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5dnENIscI6MnqfRbU/ahorF+mpipXZpTYCo93uludKU=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "remember_created_at" = '2013-04-23 13:42:39.610270', "updated_at" = '2013-04-23 13:42:39.610727' WHERE "users"."id" = 2[0m
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2013-04-23 13:00:43.646769', "current_sign_in_at" = '2013-04-23 13:42:39.614537', "sign_in_count" = 6, "updated_at" = '2013-04-23 13:42:39.615068' WHERE "users"."id" = 2
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 99ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:42:39 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (38.5ms)
+Completed 500 Internal Server Error in 55ms
+
+ActionView::Template::Error (uninitialized constant User::Role):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/user.rb:6:in `role?'
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___318195764_95472340'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___318195764_95472340'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.1ms)
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:42:45 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Redirected to http://192.168.1.115:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:42:48 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (30.0ms)
+Completed 500 Internal Server Error in 32ms
+
+ActionView::Template::Error (uninitialized constant User::Role):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/user.rb:6:in `role?'
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___318195764_95472340'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___318195764_95472340'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.8ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:43:14 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:43:14 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:43:14 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uWYgZP9dbbyyFkyJNYOCnby06bdi+Q6MzCTGoc9xnXE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-04-23 13:42:39.614537', "current_sign_in_at" = '2013-04-23 13:43:14.516035', "sign_in_count" = 7, "updated_at" = '2013-04-23 13:43:14.516772' WHERE "users"."id" = 2[0m
+  [1m[35m (4.0ms)[0m  commit transaction
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 88ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:43:14 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (2.8ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (uninitialized constant User::Role):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/user.rb:6:in `role?'
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___318195764_95472340'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___318195764_95472340'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.4ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:43:21 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uWYgZP9dbbyyFkyJNYOCnby06bdi+Q6MzCTGoc9xnXE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Redirected to http://192.168.1.115:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:43:21 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (2.4ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (uninitialized constant User::Role):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/user.rb:6:in `role?'
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___318195764_95472340'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___318195764_95472340'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.5ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:43:40 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 47ms (Views: 45.1ms | ActiveRecord: 0.3ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to AddRole (20130423134503)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to AddRole (20130423134503)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to AddRole (20130423134503)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:47:03 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 16ms (Views: 13.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:47:09 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uWYgZP9dbbyyFkyJNYOCnby06bdi+Q6MzCTGoc9xnXE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Redirected to http://192.168.1.115:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:47:09 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 18ms (Views: 15.8ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 192.168.1.100 at 2013-04-23 13:47:14 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uWYgZP9dbbyyFkyJNYOCnby06bdi+Q6MzCTGoc9xnXE="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "remember_created_at" = NULL, "updated_at" = '2013-04-23 13:47:14.473958' WHERE "users"."id" = 2[0m
+  [1m[35m (10.0ms)[0m  commit transaction
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 14ms (ActiveRecord: 10.4ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:47:14 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:47:14 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 18ms (Views: 17.9ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to AddRole (20130423134503)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+
+
+Started GET "/tasks/17/edit" for 192.168.1.100 at 2013-04-23 13:48:18 +0000
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1  [["id", "17"]]
+  Rendered tasks/_form.html.erb (2.6ms)
+  Rendered tasks/edit.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 18ms (Views: 15.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks" for 192.168.1.100 at 2013-04-23 13:48:20 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks/24/edit" for 192.168.1.100 at 2013-04-23 13:49:12 +0000
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1  [["id", "24"]]
+  Rendered tasks/_form.html.erb (1.6ms)
+  Rendered tasks/edit.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks" for 192.168.1.100 at 2013-04-23 13:49:14 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 192.168.1.100 at 2013-04-23 13:49:31 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5dnENIscI6MnqfRbU/ahorF+mpipXZpTYCo93uludKU="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:49:31 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:49:31 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 27ms (Views: 26.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-23 13:49:32 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uHDQxwJM9eKVEnyLO8txriYwexL2o/Mf8azhDxOp5Nc=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "users" SET "remember_created_at" = '2013-04-23 13:49:32.218826', "updated_at" = '2013-04-23 13:49:32.219203' WHERE "users"."id" = 2
+  [1m[36m (79.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-04-23 13:43:14.516035', "current_sign_in_at" = '2013-04-23 13:49:32.300070', "sign_in_count" = 8, "updated_at" = '2013-04-23 13:49:32.300677' WHERE "users"."id" = 2[0m
+  [1m[35m (1.6ms)[0m  commit transaction
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 166ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:49:32 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (uninitialized constant User::Role):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/user.rb:6:in `role?'
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___318195764_84485410'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___318195764_84485410'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.6ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:50:33 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (28.0ms)
+Completed 500 Internal Server Error in 75ms
+
+ActionView::Template::Error (uninitialized constant User::Role):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/user.rb:6:in `role?'
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___265185100_95842610'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___265185100_95842610'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.8ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-23 13:54:28 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1[0m
+SQLite3::SQLException: no such table: roles_users: SELECT  "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1
+  Rendered tasks/index.html.erb within layouts/application (42.5ms)
+Completed 500 Internal Server Error in 78ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such table: roles_users: SELECT  "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/user.rb:6:in `role?'
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___265185100_95842610'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___265185100_95842610'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.2ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to AddRole (20130423134503)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-23 14:03:33 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-04-23 14:03:34 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 35ms (Views: 33.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2013-04-24 09:19:07 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-04-24 09:19:07 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 29ms (Views: 27.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-24 09:19:42 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"m1USXW1x0Dcju/vQyKmKI4gzg+pq9GbP/rBQbX8VShY=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+Completed 401 Unauthorized in 110ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"m1USXW1x0Dcju/vQyKmKI4gzg+pq9GbP/rBQbX8VShY=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 90ms (Views: 13.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-24 09:19:56 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"m1USXW1x0Dcju/vQyKmKI4gzg+pq9GbP/rBQbX8VShY=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-04-23 13:49:32.300070', "current_sign_in_at" = '2013-04-24 09:19:56.762147', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 9, "updated_at" = '2013-04-24 09:19:56.763634' WHERE "users"."id" = 2[0m
+  [1m[35m (118.6ms)[0m  commit transaction
+Redirected to http://top-mp3.org:3000/tasks
+Completed 302 Found in 222ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2013-04-24 09:19:57 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1[0m
+SQLite3::SQLException: no such table: roles_users: SELECT  "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1
+  Rendered tasks/index.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such table: roles_users: SELECT  "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/user.rb:6:in `role?'
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___265185100_95842610'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___265185100_95842610'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.3ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to AddRole (20130423134503)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to AddRole (20130423134503)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to AddRole (20130423134503)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to CreateUsersRoles (20130424092701)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "users_roles" ("user_id" integer, "role_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130424092701')[0m
+  [1m[35m (12.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+
+
+Started GET "/tasks" for 127.0.0.1 at 2013-04-24 09:28:15 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1
+SQLite3::SQLException: no such table: roles_users: SELECT  "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1
+  Rendered tasks/index.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 60ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such table: roles_users: SELECT  "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/user.rb:6:in `role?'
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___265185100_95842610'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___265185100_95842610'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.9ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to CreateUsersRoles (20130424092701)
+Migrating to CreateUsersRoles2 (20130424113424)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "roles_users" ("user_id" integer, "role_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130424113424')[0m
+  [1m[35m (3.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-24 11:35:29 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WRd5utBvRnb5MfzPd+J/Ikr7zr4Iu0Y2HRjJeSrbLkw=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-04-24 09:19:56.762147', "current_sign_in_at" = '2013-04-24 11:35:29.989824', "last_sign_in_ip" = '127.0.0.1', "sign_in_count" = 10, "updated_at" = '2013-04-24 11:35:29.991188' WHERE "users"."id" = 2[0m
+  [1m[35m (3.1ms)[0m  commit transaction
+Redirected to http://www.top-mp3.org:3000/
+Completed 302 Found in 136ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-24 11:35:30 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" 
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  Rendered tasks/index.html.erb within layouts/application (10.5ms)
+Completed 500 Internal Server Error in 27ms
+
+ActionView::Template::Error (uninitialized constant Ability::Comment):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/ability.rb:11:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___265185100_95842610'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___265185100_95842610'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-24 11:37:52 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 401 Unauthorized in 2ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-04-24 11:37:53 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 21ms (Views: 19.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-24 11:42:06 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kiZPfVA63eFC4P11HJ0n0jfDY+B3XiNfc8S9NYZFd9s=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-04-24 11:35:29.989824', "current_sign_in_at" = '2013-04-24 11:42:06.842658', "sign_in_count" = 11, "updated_at" = '2013-04-24 11:42:06.843210' WHERE "users"."id" = 2[0m
+  [1m[35m (2.3ms)[0m  commit transaction
+Redirected to http://top-mp3.org:3000/
+Completed 302 Found in 98ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-24 11:42:06 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" 
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  Rendered tasks/index.html.erb within layouts/application (4.5ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (uninitialized constant Ability::Comment):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/ability.rb:11:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___265185100_95842610'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___265185100_95842610'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-24 17:18:38 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 3ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-04-24 17:18:38 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 43ms (Views: 14.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2013-04-24 17:34:20 +0000
+Processing by Devise::PasswordsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/passwords/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 37ms (Views: 35.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-24 17:34:37 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VYWchFcj4iKONXLO6FvlSfI+yythjzj0YzcVMXGi04Q=", "user"=>{"email"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+Completed 401 Unauthorized in 1ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VYWchFcj4iKONXLO6FvlSfI+yythjzj0YzcVMXGi04Q=", "user"=>{"email"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-24 17:34:43 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VYWchFcj4iKONXLO6FvlSfI+yythjzj0YzcVMXGi04Q=", "user"=>{"email"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+Completed 401 Unauthorized in 1ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VYWchFcj4iKONXLO6FvlSfI+yythjzj0YzcVMXGi04Q=", "user"=>{"email"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-24 17:34:47 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VYWchFcj4iKONXLO6FvlSfI+yythjzj0YzcVMXGi04Q=", "user"=>{"email"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+Completed 401 Unauthorized in 1ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VYWchFcj4iKONXLO6FvlSfI+yythjzj0YzcVMXGi04Q=", "user"=>{"email"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 26ms (Views: 25.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-24 17:35:20 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VYWchFcj4iKONXLO6FvlSfI+yythjzj0YzcVMXGi04Q=", "user"=>{"email"=>"", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+Completed 401 Unauthorized in 1ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VYWchFcj4iKONXLO6FvlSfI+yythjzj0YzcVMXGi04Q=", "user"=>{"email"=>"", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 51ms (Views: 50.3ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:22:23 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Author' LIMIT 1
+  Rendered tasks/index.html.erb within layouts/application (36.9ms)
+Completed 500 Internal Server Error in 82ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 2+)):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___870825497_82751940'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___870825497_82751940'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.6ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:24:57 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Author' LIMIT 1
+  Rendered tasks/index.html.erb within layouts/application (43.5ms)
+Completed 500 Internal Server Error in 88ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 2+)):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___824281570_86749300'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___824281570_86749300'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:28:04 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" 
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2 AND "roles"."name" = 'Author' LIMIT 1
+  Rendered tasks/index.html.erb within layouts/application (7.6ms)
+Completed 500 Internal Server Error in 15ms
+
+ActionView::Template::Error (wrong number of arguments (1 for 2+)):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 
+    20: 	 <% end %>
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___824281570_85149280'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___824281570_85149280'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:40:38 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 68ms
+
+ActionView::Template::Error (undefined method `admin?' for #<User:0xb634b6f4>):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___824281570_72572190'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___824281570_72572190'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:44:32 +0000
+
+ActionController::RoutingError (undefined method `devise_for' for TasksController:Class):
+  app/controllers/tasks_controller.rb:3:in `<class:TasksController>'
+  app/controllers/tasks_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:45:54 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 30ms
+
+ActionView::Template::Error (undefined method `admin?' for #<User:0xb633ccbc>):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___824281570_72572190'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___824281570_72572190'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:46:07 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:46:07 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 33ms (Views: 32.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:46:11 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+Completed 401 Unauthorized in 80ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 92ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:46:14 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+Completed 401 Unauthorized in 77ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 90ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:47:24 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+Completed 401 Unauthorized in 104ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 95ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:47:25 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+Completed 401 Unauthorized in 78ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 90ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:48:10 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:48:10 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:48:11 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+Completed 401 Unauthorized in 79ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 92ms (Views: 12.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2013-04-25 13:48:18 +0000
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_up"):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:49:40 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+Completed 401 Unauthorized in 93ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 96ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:49:41 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+Completed 401 Unauthorized in 80ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 92ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/registration" for 127.0.0.1 at 2013-04-25 13:50:00 +0000
+
+ActionController::RoutingError (No route matches [GET] "/registration"):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/registration" for 127.0.0.1 at 2013-04-25 13:51:15 +0000
+
+ActionController::RoutingError (No route matches [GET] "/registration"):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:51:19 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 3ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:51:19 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 43ms (Views: 17.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-04-25 13:51:20 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1
+Completed 401 Unauthorized in 80ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XcVWLdYdoHzN8YAlW+vpgXHbPsXn8V12Z4qf4qRMROE=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 119ms (Views: 39.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 13:55:53 +0000
+
+NameError (uninitialized constant Rails3BootstrapDeviseCancan):
+  config/routes.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.0ms)
+
+
+Started GET "/tasks" for 192.168.1.100 at 2013-04-25 13:56:51 +0000
+
+ActionController::RoutingError (No route matches [GET] "/tasks"):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/users/edit" for 192.168.1.100 at 2013-04-25 14:02:47 +0000
+
+ActionController::RoutingError (No route matches [GET] "/users/edit"):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-25 14:02:56 +0000
+Processing by TasksController#index as HTML
+Completed 401 Unauthorized in 8ms
+
+
+Started GET "/users/sign_in" for 192.168.1.100 at 2013-04-25 14:02:56 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 72ms (Views: 17.7ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/users/sign_in" for 192.168.1.100 at 2013-04-25 14:02:56 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+wqmgV5ig0T2ML8GIdNk53HY4rn7pe8Tfwg36ZU9B1k=", "user"=>{"email"=>"rulyua@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'rulyua@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-04-24 11:42:06.842658', "current_sign_in_at" = '2013-04-25 14:02:57.078351', "current_sign_in_ip" = '192.168.1.100', "sign_in_count" = 12, "updated_at" = '2013-04-25 14:02:57.101571' WHERE "users"."id" = 2[0m
+  [1m[35m (17.2ms)[0m  commit transaction
+Redirected to http://192.168.1.115:3000/
+Completed 302 Found in 133ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-25 14:02:57 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 20ms
+
+ActionView::Template::Error (undefined method `admin?' for #<User:0xa57452c>):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/ability.rb:7:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___824281570_72572190'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___824281570_72572190'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.0ms)
+
+
+Started GET "/" for 192.168.1.100 at 2013-04-25 14:03:23 +0000
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" 
+  Rendered tasks/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 31ms (Views: 27.3ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/tasks/24" for 192.168.1.100 at 2013-04-25 14:03:27 +0000
+Processing by TasksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+wqmgV5ig0T2ML8GIdNk53HY4rn7pe8Tfwg36ZU9B1k=", "id"=>"24"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1  [["id", "24"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "tasks" WHERE "tasks"."id" = ?  [["id", 24]]
+  [1m[36m (11.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://192.168.1.115:3000/tasks
+Completed 302 Found in 15ms (ActiveRecord: 11.9ms)
+
+
+Started GET "/tasks" for 192.168.1.100 at 2013-04-25 14:03:28 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks/25/edit" for 192.168.1.100 at 2013-04-25 14:03:37 +0000
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"25"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1[0m  [["id", "25"]]
+  Rendered tasks/_form.html.erb (2.6ms)
+  Rendered tasks/edit.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 18ms (Views: 15.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks" for 192.168.1.100 at 2013-04-25 14:03:38 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 0.3ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to CreateUsersRoles (20130424092701)
+Migrating to CreateUsersRoles2 (20130424113424)
+Migrating to CreateTags (20130425142026)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag" varchar(255), "post_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_tags_on_post_id" ON "tags" ("post_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130425142026')
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 14:23:31 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 45ms (Views: 14.4ms | ActiveRecord: 1.0ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateTags (20130425142026)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mDROP INDEX "index_tags_on_post_id"[0m
+  [1m[35m (6.5ms)[0m  DROP TABLE "tags"
+  [1m[36m (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20130425142026'[0m
+  [1m[35m (11.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to CreateUsersRoles (20130424092701)
+Migrating to CreateUsersRoles2 (20130424113424)
+Migrating to CreateTags (20130425142641)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag" varchar(255), "task_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_tags_on_task_id" ON "tags" ("task_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130425142641')
+  [1m[36m (3.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 14:32:15 +0000
+
+SyntaxError (/var/www/html/ruslan/rb/todo/app/models/task.rb:12: syntax error, unexpected keyword_end, expecting end-of-input):
+  app/controllers/tasks_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 14:32:38 +0000
+
+SyntaxError (/var/www/html/ruslan/rb/todo/app/models/task.rb:12: syntax error, unexpected keyword_end, expecting end-of-input):
+  app/controllers/tasks_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 14:34:22 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 48ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTasks (20130415140428)
+Migrating to DeviseCreateUsers (20130417163504)
+Migrating to CancanAdded (20130423122801)
+Migrating to CreateRoles (20130423123935)
+Migrating to AddConfirmableToDeviseV1 (20130423130858)
+Migrating to CreateUsersRoles (20130424092701)
+Migrating to CreateUsersRoles2 (20130424113424)
+Migrating to CreateTags (20130425142641)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-25 14:41:20 +0000
+Processing by TasksController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" [0m
+  Rendered tasks/index.html.erb within layouts/application (3.5ms)
+Completed 500 Internal Server Error in 38ms
+
+ActionView::Template::Error (undefined method `admin?' for #<User:0xa15d09c>):
+    14:     <td><%= task.name %></td>
+    15:     <td style="display:none;"><%= task.status %></td>
+    16:     <td style="display:none;"><%= link_to 'Show', task %></td>
+    17: 	<% if can? :update,  @task %>
+    18: 	    <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
+    19: 	    <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
+    20: 	 <% end %>
+  app/models/ability.rb:6:in `initialize'
+  app/views/tasks/index.html.erb:17:in `block in _app_views_tasks_index_html_erb___824281570_85863530'
+  app/views/tasks/index.html.erb:12:in `each'
+  app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb___824281570_85863530'
+  app/controllers/tasks_controller.rb:14:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.1ms)
