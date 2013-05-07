@@ -21,6 +21,9 @@
     <%= f.label :status %><br />
     <%= f.check_box :status %>
   </div>
+
+  <%= f.select :Tasklist_id, Tasklist.all.collect {|t| [ t.name, t.id ] }, {:prompt => 'Select Tasklist'} %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
