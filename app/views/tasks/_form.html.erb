@@ -22,7 +22,12 @@
     <%= f.check_box :status %>
   </div>
 
-  <%= f.select :Tasklist_id, Tasklist.all.collect {|t| [ t.name, t.id ] }, {:prompt => 'Select Tasklist'} %>
+  <%= f.select :tasklist_id, Tasklist.all.collect {|t| [ t.name, t.id ] }, {:prompt => 'Select Tasklist'} %>
+
+  <% Tag.all.each do |tag| %>
+    <%= check_box_tag 'task[tag_ids][]', tag.id, @task.tags.include?(tag) %>
+    <%= tag.name %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

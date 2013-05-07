@@ -13,27 +13,11 @@
 
 ActiveRecord::Schema.define(:version => 20130430152617) do
 
-  create_table "roles", :force => true do |t|
+  create_table "tags", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "tags", :force => true do |t|
-    t.string   "tag"
-    t.integer  "task_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "tags", ["task_id"], :name => "index_tags_on_task_id"
 
   create_table "tags_tasks", :id => false, :force => true do |t|
     t.integer "tag_id"
@@ -51,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20130430152617) do
     t.boolean  "status"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "Tasklist_id"
+    t.integer  "tasklist_id"
   end
 
   create_table "users", :force => true do |t|
@@ -67,20 +51,9 @@ ActiveRecord::Schema.define(:version => 20130430152617) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "users_roles", :id => false, :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
 end
