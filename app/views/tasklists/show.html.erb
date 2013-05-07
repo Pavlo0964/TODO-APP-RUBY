@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @tasklist.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_tasklist_path(@tasklist) %> |
+<%= link_to 'Back', tasklists_path %>
