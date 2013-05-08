@@ -68,3 +68,9 @@ background-image: url('/assets/bg.png'); background-position: left top; backgrou
     width: 100%;
     z-index: 2;
 }
+
+.red_text{
+	color:red;
+}
+
+a { color:black}
