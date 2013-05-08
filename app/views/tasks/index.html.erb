@@ -19,6 +19,9 @@
       <td style="isplay:none;">
         <% task.tags.map(&:name) %>
       </td>
+      <td>
+        <%= image_tag task.photo.url(:small) %>
+      </td>
       <td><%= link_to 'Edit', edit_task_path(task), class: 'button' %></td>
       <td><%= link_to 'Delete', task, method: :delete, class: 'button red' %></td>
    <%# end %>
