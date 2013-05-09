@@ -1,0 +1,16 @@
+= form_for(@tag) do |f|
+  - if @tag.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@tag.errors.count, "error")
+        prohibited this tag from being saved:
+      %ul
+        - @tag.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+    = select_tag 'tag[task_ids][]', options_from_collection_for_select(Task.all, "id", "name",  @tag.tasks.map(&:id)), multiple: true, include_blank: false
+  .actions
+    = f.submit

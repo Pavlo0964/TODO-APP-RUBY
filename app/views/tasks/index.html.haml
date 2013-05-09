@@ -1,0 +1,22 @@
+%h3 Listing tasks
+%table.todo_table
+  %tr
+    %th
+    %th
+    %th
+    %th
+    %th
+  - @tasks.each do |task|
+    %tr
+      %td= task.name
+      %td{:style => "display:none;"}= task.status
+      %td{:style => "display:none;"}= link_to 'Show', task
+      %td{:style => "isplay:none;"}= task.tasklist.try(:name)
+      %td{:style => "isplay:none;"}
+        - task.tags.map(&:name)
+      %td
+        = image_tag task.photo.url(:small)
+      %td= link_to 'Edit', edit_task_path(task), class: 'button'
+      %td= link_to 'Delete', task, method: :delete, class: 'button red'
+%br/
+= link_to 'New Task', new_task_path, class: 'button'

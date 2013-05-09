@@ -43,3 +43,4 @@ gem 'devise'
 gem 'cancan'
 
 gem "paperclip"
+gem "haml"

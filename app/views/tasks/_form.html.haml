@@ -1,0 +1,25 @@
+= form_for(@task) do |f|
+  - if @task.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@task.errors.count, "error")
+        prohibited this task from being saved:
+      %ul
+        - @task.errors.full_messages.each do |msg|
+          %li= msg
+  .fancyInput
+    = f.text_field :name
+    %div
+      %b.caret{:style => "height: 78px;"} &nbsp;
+  .field{:style => "display:none;"}
+    = f.label :status
+    %br/
+    = f.check_box :status
+  = f.select :tasklist_id, Tasklist.all.collect {|t| [ t.name, t.id ] }, {:prompt => 'Select Tasklist'}
+  - Tag.all.each do |tag|
+    = check_box_tag 'task[tag_ids][]', tag.id, @task.tags.include?(tag)
+    = tag.name
+  .field
+    = f.file_field :photo
+  .actions
+    = f.submit
