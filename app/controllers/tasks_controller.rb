@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
 
 before_filter :authenticate_user!, :except => [:some_action_without_auth]
+load_and_authorize_resource
+#authorize! :read, Article, :message => "You don't have permission to load this page."
+
 # Access Current User
 def index
 	@things = current_user.things

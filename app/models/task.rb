@@ -2,6 +2,7 @@ class Task < ActiveRecord::Base
 	attr_accessible :name, :status, :tasklist_id, :tag_ids, :photo,  :user_id
     has_and_belongs_to_many :tags
     belongs_to :tasklist
+    belongs_to :user
 
     has_attached_file :photo, :styles => { :small => "150x150>" },
                       :url  => "/assets/products/:id/:style/:basename.:extension",
