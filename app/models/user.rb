@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
-  def role?(role)
-      return !!self.roles.find_by_name(role.to_s.camelize)
-  end
+	before_create :add_default_role
+	protected
+      def add_default_role
+        self.user_role ='general'
+      end
 end
