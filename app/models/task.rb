@@ -1,5 +1,7 @@
 class Task < ActiveRecord::Base
-	attr_accessible :name, :status, :tasklist_id, :tag_ids, :photo,  :user_id
+	attr_accessible :name, :status, :tasklist_id, :tag_ids, :photo,  :user_id, :avatar, :remote_avatar_url, :avatar_cache, :remove_avatar
+
+    mount_uploader :avatar, AvatarUploader
     has_and_belongs_to_many :tags
     belongs_to :tasklist
     belongs_to :user

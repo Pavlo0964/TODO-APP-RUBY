@@ -44,3 +44,4 @@ gem 'cancan'
 
 gem "paperclip"
 gem "haml"
+gem 'carrierwave'
